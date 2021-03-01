@@ -1,0 +1,3 @@
+# ignore an inventory files
+inventory*
+*inventory.yaml
