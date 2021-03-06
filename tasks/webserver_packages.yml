@@ -1,4 +1,36 @@
-- name: Install Aplication Packages
+- name: Install Application Packages
   when: ansible_facts['hostname'] == "webserver"
   yum:
-    name: "{{ app_packages }}"
+    name: "{{app_packages}}"
+    state: latest
+
+- name: Install Remi Repositories
+  when: ansible_facts['hostname'] == "webserver"
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+- name: Install yum-utils
+  when: ansible_facts['hostname'] == "webserver"
+  yum:
+    name: yum-utils
+    state: latest
+- name: Enable remi-php72 repository
+  when: ansible_facts['hostname'] == "webserver"
+  yum_repository:
+    description: Extra Packages for Enterprise Linux 7 - $basearch
+    metalink: https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
+    name: remi-php72
+    enabled: yes
+
+- name: Updated Repository on web-server
+  when: ansible_facts['hostname'] == "webserver"
+  yum:
+    name: "*"
+    state: latest
+- name: Install PHP7.2
+  when: ansible_facts['hostname'] == "webserver"
+  yum:
+    name: "{{php_package}}"
+    state: present
+    enablerepo: "remi-*,epel,base"
+   

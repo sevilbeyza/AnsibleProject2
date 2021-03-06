@@ -5,8 +5,12 @@ bootstrap_packages:
   - wget
 
 app_packages: 
+  - epel-release
   - httpd
   - mysql 
+
+php_package: 
+  - php72
 
 database_packages:  #we are instaling mariadb on ubuntu
   - mariadb-server
