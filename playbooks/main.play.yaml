@@ -1,0 +1,16 @@
+---
+  - name: Main Play
+    hosts: all
+    gather_facts: "{{ facts }}"
+    vars_files:
+      - ../variables/main_vars.yaml
+    tasks:
+      - include: ../tasks/ping.yaml
+      - include: ../tasks/bootstrap.yaml
+      - include: ../tasks/webserver_packages.yml
+      - include: ../tasks/database_packages.yml
+
+
+     
+#not here is order is importand 
+#it will run based on order
