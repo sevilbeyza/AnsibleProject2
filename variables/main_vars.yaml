@@ -10,7 +10,14 @@ app_packages:
   - mysql 
 
 php_package: 
-  - php72
+  - php 
+  - php-common 
+  - php-opcache 
+  - php-mcrypt 
+  - php-cli 
+  - php-gd 
+  - php-curl 
+  - php-mysql 
 
 database_packages:  #we are instaling mariadb on ubuntu
   - mariadb-server

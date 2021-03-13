@@ -9,6 +9,7 @@
       - include: ../tasks/bootstrap.yaml
       - include: ../tasks/webserver_packages.yml
       - include: ../tasks/database_packages.yml
+      - include: ../tasks/start_apache.yaml
 
 
      
